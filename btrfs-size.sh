@@ -5,13 +5,15 @@
 
 
 LOCATION='/'
+PARAM=''
 if [ $1 ]; then
 LOCATION=$1
+PARAM='-o'
 fi
 
 OUTPUT="" 
 
-COL1=`sudo btrfs subvolume list "$LOCATION"`
+COL1=`sudo btrfs subvolume list $PARAM "$LOCATION"`
 
 if [ $? -ne 0 ]; then
 	echo "Failed to the volume data! BTRFS volume is required on the target location!"
